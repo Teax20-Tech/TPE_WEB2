@@ -17,4 +17,15 @@ class ControllerEntrada {
         $entradas = $this->model->getEntradas();
         $this->view->showEntradas($entradas);
     }
+
+    public function showEntrada($id) {
+        $entrada = $this->model->getEntrada($id);
+        $this->view->showEntrada($entrada);
+    }
+    
+    public function showEntradasByCliente($idCliente) {
+        $entradas = $this->model->getEntradasByCliente($idCliente);
+        $this->view->showEntradas($entradas);
+    }
+    
 }

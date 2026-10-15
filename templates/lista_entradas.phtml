@@ -13,6 +13,12 @@
             Tipo: <?= $entrada->tipo_entrada ?>
             -
             Valor: $<?= $entrada->valor_final ?>
+            -
+            Cliente: <?= $entrada->nombre_cliente ?>
+            -
+            <a href="/TPE_WEB2/entrada/<?= $entrada->id_entrada ?>">
+                Ver detalle
+            </a>
         </p>
     <?php endforeach; ?>
 

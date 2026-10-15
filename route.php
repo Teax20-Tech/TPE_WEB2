@@ -20,8 +20,16 @@ switch ($params[0]) {
         break;
 
     case 'clientes':
-        $controllerCliente->showClientes();
-        break;
+        if (isset($params[1]) && isset($params[2]) && $params[2] == 'entradas') {
+            $controllerEntrada->showEntradasByCliente($params[1]);
+        } else {
+            $controllerCliente->showClientes();
+        }
+    break;
+    
+    case 'entrada':
+        $controllerEntrada->showEntrada($params[1]);
+    break;
 
     default:
         echo "Página no encontrada";
