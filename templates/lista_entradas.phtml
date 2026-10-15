@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Entradas</title>
+</head>
+<body>
+
+    <h1>Listado de entradas</h1>
+
+    <?php foreach ($entradas as $entrada): ?>
+        <p>
+            Tipo: <?= $entrada->tipo_entrada ?>
+            -
+            Valor: $<?= $entrada->valor_final ?>
+        </p>
+    <?php endforeach; ?>
+
+</body>
+</html>
