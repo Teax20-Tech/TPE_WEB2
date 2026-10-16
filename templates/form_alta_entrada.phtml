@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar entrada</title>
+</head>
+<body>
+
+    <h1>Agregar entrada</h1>
+
+    <form action="/TPE_WEB2/entrada/agregar" method="POST">
+
+        <label>Valor final:</label>
+        <input type="number" name="valor_final" required>
+
+        <br><br>
+
+        <label>Tipo de entrada:</label>
+        <input type="text" name="tipo_entrada" required>
+
+        <br><br>
+
+        <label>Descuento aplicado:</label>
+        <input type="number" name="descuento_aplicado" required>
+
+        <br><br>
+
+        <label>Cliente:</label>
+        <select name="id_cliente" required>
+
+            <?php foreach ($clientes as $cliente): ?>
+                <option value="<?= $cliente->id_cliente ?>">
+                    <?= $cliente->nombre ?>
+                </option>
+            <?php endforeach; ?>
+
+        </select>
+
+        <br><br>
+
+        <button type="submit">Agregar entrada</button>
+
+    </form>
+
+</body>
+</html>

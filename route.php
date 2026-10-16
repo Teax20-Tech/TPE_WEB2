@@ -28,8 +28,31 @@ switch ($params[0]) {
     break;
     
     case 'entrada':
-        $controllerEntrada->showEntrada($params[1]);
-    break;
+        if (isset($params[1]) && $params[1] == 'agregar') {
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $controllerEntrada->addEntrada();
+            } else {
+                $controllerEntrada->showFormAddEntrada();
+            }
+
+        } elseif (isset($params[1]) && $params[1] == 'editar' && isset($params[2])) {
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $controllerEntrada->editEntrada($params[2]);
+            } else {
+                $controllerEntrada->showFormEditEntrada($params[2]);
+            }
+
+        } elseif (isset($params[1]) && $params[1] == 'eliminar' && isset($params[2])) {
+
+            $controllerEntrada->deleteEntrada($params[2]);
+
+        } else {
+
+            $controllerEntrada->showEntrada($params[1]);
+        }
+        break;
 
     default:
         echo "Página no encontrada";

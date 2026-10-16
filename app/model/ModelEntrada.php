@@ -45,4 +45,50 @@ class ModelEntrada extends Model {
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function insertEntrada($valorFinal, $tipoEntrada, $descuentoAplicado, $idCliente) {
+        $query = $this->db->prepare(
+            'INSERT INTO entrada
+            (valor_final, tipo_entrada, descuento_aplicado, CLIENTE_id_cliente)
+            VALUES (?, ?, ?, ?)'
+        );
+
+        $query->execute([
+            $valorFinal,
+            $tipoEntrada,
+            $descuentoAplicado,
+            $idCliente
+        ]);
+
+        return $this->db->lastInsertId();
+    }
+
+    public function updateEntrada($id, $valorFinal, $tipoEntrada, $descuentoAplicado, $idCliente) {
+        $query = $this->db->prepare(
+            'UPDATE entrada
+            SET valor_final = ?,
+                tipo_entrada = ?,
+                descuento_aplicado = ?,
+                CLIENTE_id_cliente = ?
+            WHERE id_entrada = ?'
+        );
+
+        $query->execute([
+            $valorFinal,
+            $tipoEntrada,
+            $descuentoAplicado,
+            $idCliente,
+            $id
+        ]);
+    }
+
+    public function deleteEntrada($id) {
+        $query = $this->db->prepare(
+            'DELETE FROM entrada
+            WHERE id_entrada = ?'
+        );
+
+        $query->execute([$id]);
+    }
+
+    
 }

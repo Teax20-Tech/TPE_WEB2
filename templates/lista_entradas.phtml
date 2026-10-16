@@ -8,19 +8,33 @@
 
     <h1>Listado de entradas</h1>
 
+    <a href="/TPE_WEB2/entrada/agregar">
+        Agregar entrada
+    </a>
+
+<br><br>
+
     <?php foreach ($entradas as $entrada): ?>
-        <p>
-            Tipo: <?= $entrada->tipo_entrada ?>
-            -
-            Valor: $<?= $entrada->valor_final ?>
-            -
-            Cliente: <?= $entrada->nombre_cliente ?>
-            -
-            <a href="/TPE_WEB2/entrada/<?= $entrada->id_entrada ?>">
-                Ver detalle
-            </a>
-        </p>
-    <?php endforeach; ?>
+    <p>
+        Tipo: <?= $entrada->tipo_entrada ?>
+        -
+        Valor: $<?= $entrada->valor_final ?>
+        -
+        Cliente: <?= $entrada->nombre_cliente ?>
+        -
+        <a href="/TPE_WEB2/entrada/<?= $entrada->id_entrada ?>">
+            Ver detalle
+        </a>
+        -
+        <a href="/TPE_WEB2/entrada/editar/<?= $entrada->id_entrada ?>">
+            Editar
+        </a>
+        -
+        <a href="/TPE_WEB2/entrada/eliminar/<?= $entrada->id_entrada ?>">
+            Eliminar
+        </a>
+    </p>
+<?php endforeach; ?>
 
 </body>
 </html>
