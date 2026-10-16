@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar cliente</title>
+</head>
+<body>
+
+    <h1>Editar cliente</h1>
+
+    <form action="/TPE_WEB2/cliente/editar/<?= $cliente->id_cliente ?>" method="POST">
+
+        <label>Nombre:</label>
+        <input
+            type="text"
+            name="nombre"
+            value="<?= $cliente->nombre ?>"
+            required
+        >
+
+        <br><br>
+
+        <label>Fecha de nacimiento:</label>
+        <input
+            type="date"
+            name="fecha_nacimiento"
+            value="<?= $cliente->fecha_nacimiento ?>"
+            required
+        >
+
+        <br><br>
+
+        <label>
+            <input
+                type="checkbox"
+                name="socio"
+                <?= $cliente->socio ? 'checked' : '' ?>
+            >
+            Es socio
+        </label>
+
+        <br><br>
+
+        <button type="submit">Guardar cambios</button>
+
+    </form>
+
+</body>
+</html>

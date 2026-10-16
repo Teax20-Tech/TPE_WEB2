@@ -8,6 +8,12 @@
 
     <h1>Listado de clientes</h1>
 
+    <a href="/TPE_WEB2/cliente/agregar">
+        Agregar cliente
+    </a>
+
+<br><br>
+
     <?php foreach ($clientes as $cliente): ?>
         <p>
             Nombre: <?= $cliente->nombre ?>
@@ -16,6 +22,14 @@
             -
             <a href="/TPE_WEB2/clientes/<?= $cliente->id_cliente ?>/entradas">
                 Ver entradas
+            </a>
+            -
+            <a href="/TPE_WEB2/cliente/editar/<?= $cliente->id_cliente ?>">
+                Editar
+            </a>
+            -
+            <a href="/TPE_WEB2/cliente/eliminar/<?= $cliente->id_cliente ?>">
+                Eliminar
             </a>
         </p>
     <?php endforeach; ?>

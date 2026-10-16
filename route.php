@@ -26,6 +26,30 @@ switch ($params[0]) {
             $controllerCliente->showClientes();
         }
     break;
+
+    case 'cliente':
+        if (isset($params[1]) && $params[1] == 'agregar') {
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $controllerCliente->addCliente();
+            } else {
+                $controllerCliente->showFormAddCliente();
+            }
+
+        } elseif (isset($params[1]) && $params[1] == 'editar' && isset($params[2])) {
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $controllerCliente->editCliente($params[2]);
+            } else {
+                $controllerCliente->showFormEditCliente($params[2]);
+            }
+
+        } elseif (isset($params[1]) && $params[1] == 'eliminar' && isset($params[2])) {
+
+            $controllerCliente->deleteCliente($params[2]);
+
+        }
+        break;
     
     case 'entrada':
         if (isset($params[1]) && $params[1] == 'agregar') {
