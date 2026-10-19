@@ -1,3 +1,8 @@
+<?php
+if (session_status() != PHP_SESSION_ACTIVE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,10 +12,25 @@
 <body>
 
     <h1>Listado de clientes</h1>
+    <?php if (isset($_SESSION['ID_USER'])): ?>
 
-    <a href="/TPE_WEB2/cliente/agregar">
-        Agregar cliente
-    </a>
+    <p>
+        Usuario: <?= $_SESSION['USER_NAME'] ?>
+    </p>
+
+    <a href="/TPE_WEB2/logout">Cerrar sesión</a>
+
+    <?php else: ?>
+
+        <a href="/TPE_WEB2/login">Iniciar sesión</a>
+
+    <?php endif; ?>
+    
+    <?php if (isset($_SESSION['ID_USER'])): ?>
+
+        <a href="/TPE_WEB2/cliente/agregar">Agregar cliente</a>
+
+    <?php endif; ?>
 
 <br><br>
 
@@ -24,13 +44,13 @@
                 Ver entradas
             </a>
             -
-            <a href="/TPE_WEB2/cliente/editar/<?= $cliente->id_cliente ?>">
-                Editar
-            </a>
-            -
-            <a href="/TPE_WEB2/cliente/eliminar/<?= $cliente->id_cliente ?>">
-                Eliminar
-            </a>
+            <?php if (isset($_SESSION['ID_USER'])): ?>
+
+                <a href="/TPE_WEB2/cliente/editar/<?= $cliente->id_cliente ?>">Editar</a>
+
+                <a href="/TPE_WEB2/cliente/eliminar/<?= $cliente->id_cliente ?>">Eliminar</a>
+
+            <?php endif; ?>
         </p>
     <?php endforeach; ?>
 

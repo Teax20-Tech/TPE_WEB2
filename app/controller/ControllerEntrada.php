@@ -3,6 +3,7 @@
 require_once './app/model/ModelEntrada.php';
 require_once './app/view/ViewEntrada.php';
 require_once './app/model/ModelCliente.php';
+require_once './app/helper/AuthHelper.php';
 
 class ControllerEntrada {
 
@@ -30,6 +31,8 @@ class ControllerEntrada {
     }
 
     public function addEntrada() {
+        AuthHelper::verify();
+
         $valorFinal = $_POST['valor_final'];
         $tipoEntrada = $_POST['tipo_entrada'];
         $descuentoAplicado = $_POST['descuento_aplicado'];
@@ -46,6 +49,8 @@ class ControllerEntrada {
     }
 
     public function showFormAddEntrada() {
+        AuthHelper::verify();
+        
         $modelCliente = new ModelCliente();
         $clientes = $modelCliente->getClientes();
 
@@ -53,6 +58,8 @@ class ControllerEntrada {
     }
 
     public function showFormEditEntrada($id) {
+        AuthHelper::verify();
+
         $entrada = $this->model->getEntrada($id);
 
         $modelCliente = new ModelCliente();
@@ -62,6 +69,8 @@ class ControllerEntrada {
     }
 
     public function editEntrada($id) {
+        AuthHelper::verify();
+
         $valorFinal = $_POST['valor_final'];
         $tipoEntrada = $_POST['tipo_entrada'];
         $descuentoAplicado = $_POST['descuento_aplicado'];
@@ -79,6 +88,7 @@ class ControllerEntrada {
     }
 
     public function deleteEntrada($id) {
+        AuthHelper::verify();
         $this->model->deleteEntrada($id);
         header('Location: /TPE_WEB2/entradas');
     }

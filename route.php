@@ -1,8 +1,10 @@
 <?php
 
+require_once './app/controller/ControllerAuth.php';
 require_once './app/controller/ControllerEntrada.php';
 require_once './app/controller/ControllerCliente.php';
 
+$controllerAuth = new ControllerAuth();
 $controllerEntrada = new ControllerEntrada();
 $controllerCliente = new ControllerCliente();
 
@@ -25,7 +27,7 @@ switch ($params[0]) {
         } else {
             $controllerCliente->showClientes();
         }
-    break;
+        break;
 
     case 'cliente':
         if (isset($params[1]) && $params[1] == 'agregar') {
@@ -78,6 +80,21 @@ switch ($params[0]) {
         }
         break;
 
+    case 'login':
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $controllerAuth->login();
+        } else {
+            $controllerAuth->showLogin();
+        }
+
+        break;
+
+    case 'logout':
+
+        $controllerAuth->logout();
+
+        break;
     default:
         echo "Página no encontrada";
         break;

@@ -1,5 +1,5 @@
 <?php
-
+require_once './app/helper/AuthHelper.php';
 require_once './app/model/ModelCliente.php';
 require_once './app/view/ViewCliente.php';
 
@@ -19,11 +19,13 @@ class ControllerCliente {
     }
 
     public function showFormAddCliente() {
+        AuthHelper::verify();
         $this->view->showFormAddCliente();
     }
 
 
     public function addCliente() {
+        AuthHelper::verify();
         $socio = isset($_POST['socio']) ? 1 : 0;
         $nombre = $_POST['nombre'];
         $fechaNacimiento = $_POST['fecha_nacimiento'];
@@ -39,6 +41,7 @@ class ControllerCliente {
 
 
     public function showFormEditCliente($id) {
+        AuthHelper::verify();
         $cliente = $this->model->getCliente($id);
 
         $this->view->showFormEditCliente($cliente);
@@ -46,6 +49,7 @@ class ControllerCliente {
 
 
     public function editCliente($id) {
+        AuthHelper::verify();
         $socio = isset($_POST['socio']) ? 1 : 0;
         $nombre = $_POST['nombre'];
         $fechaNacimiento = $_POST['fecha_nacimiento'];
@@ -61,6 +65,7 @@ class ControllerCliente {
     }
 
     public function deleteCliente($id) {
+        AuthHelper::verify();
         try {
             $this->model->deleteCliente($id);
 
