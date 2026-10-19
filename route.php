@@ -74,12 +74,16 @@ switch ($params[0]) {
 
             $controllerEntrada->deleteEntrada($params[2]);
 
-        } else {
+        } elseif (isset($params[1])) {
 
             $controllerEntrada->showEntrada($params[1]);
+
+        } else {
+
+            echo "Página no encontrada";
         }
         break;
-
+        
     case 'login':
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
