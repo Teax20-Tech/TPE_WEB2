@@ -1,46 +1,44 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Agregar entrada</title>
-</head>
-<body>
+<?php require './templates/header.phtml'; ?>
 
-    <h1>Agregar entrada</h1>
+<h1>Agregar entrada</h1>
 
-    <form action="/TPE_WEB2/entrada/agregar" method="POST">
+<form action="/TPE_WEB2/entrada/agregar" method="POST">
 
-        <label>Valor final:</label>
-        <input type="number" name="valor_final" required>
+    <label>Valor final:</label>
+    <input type="number" name="valor_final" required>
 
-        <br><br>
+    <br><br>
 
-        <label>Tipo de entrada:</label>
-        <input type="text" name="tipo_entrada" required>
+    <label>Tipo de entrada:</label>
+    <input type="text" name="tipo_entrada" required>
 
-        <br><br>
+    <br><br>
 
-        <label>Descuento aplicado:</label>
-        <input type="number" name="descuento_aplicado" required>
+    <label>Descuento aplicado:</label>
+    <input type="number" name="descuento_aplicado" required>
 
-        <br><br>
+    <br><br>
 
-        <label>Cliente:</label>
-        <select name="id_cliente" required>
+    <label>Cliente:</label>
+    <select name="id_cliente" required>
 
-            <?php foreach ($clientes as $cliente): ?>
-                <option value="<?= $cliente->id_cliente ?>">
-                    <?= $cliente->nombre ?>
-                </option>
-            <?php endforeach; ?>
+        <?php foreach ($clientes as $cliente): ?>
 
-        </select>
+            <option value="<?= $cliente->id_cliente ?>">
+                <?= $cliente->nombre ?>
+            </option>
 
-        <br><br>
+        <?php endforeach; ?>
 
-        <button type="submit">Agregar entrada</button>
+    </select>
 
-    </form>
+    <br><br>
 
-</body>
-</html>
+    <button type="submit">Agregar entrada</button>
+
+</form>
+<br>
+
+<a href="/TPE_WEB2/entradas">Volver al listado</a>
+
+<?php require './templates/footer.phtml'; ?>

@@ -1,35 +1,31 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php require './templates/header.phtml'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Iniciar sesión</title>
-</head>
+<h1>Iniciar sesión</h1>
 
-<body>
+<?php if (!empty($error)): ?>
 
-    <h1>Iniciar sesión</h1>
+    <p><?= $error ?></p>
 
-    <form action="/TPE_WEB2/login" method="POST">
+<?php endif; ?>
 
-        <label>Usuario:</label>
-        <input type="text" name="usuario" required>
+<form action="/TPE_WEB2/login" method="POST">
 
-        <br><br>
+    <label>Usuario:</label>
+    <input type="text" name="usuario" required>
 
-        <label>Contraseña:</label>
-        <input type="password" name="password" required>
+    <br><br>
 
-        <br><br>
+    <label>Contraseña:</label>
+    <input type="password" name="password" required>
 
-        <button type="submit">Ingresar</button>
+    <br><br>
 
-    </form>
+    <button type="submit">Ingresar</button>
 
-    <br>
+</form>
 
-    <a href="/TPE_WEB2/entradas">Volver</a>
+<br>
 
-</body>
+<a href="/TPE_WEB2/entradas">Volver</a>
 
-</html>
+<?php require './templates/footer.phtml'; ?>

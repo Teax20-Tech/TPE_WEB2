@@ -2,7 +2,7 @@
 
 class ViewCliente {
 
-    public function showClientes($clientes) {
+    public function showClientes($clientes, $error = null) {
         require './templates/lista_clientes.phtml';
     }
 
@@ -12,5 +12,5 @@ class ViewCliente {
 
     public function showFormEditCliente($cliente) {
         require './templates/form_editar_cliente.phtml';
-    }
+    }   
 }

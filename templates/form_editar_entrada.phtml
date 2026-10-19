@@ -1,64 +1,61 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Editar entrada</title>
-</head>
-<body>
+<?php require './templates/header.phtml'; ?>
 
-    <h1>Editar entrada</h1>
+<h1>Editar entrada</h1>
 
-    <form action="/TPE_WEB2/entrada/editar/<?= $entrada->id_entrada ?>" method="POST">
+<form action="/TPE_WEB2/entrada/editar/<?= $entrada->id_entrada ?>" method="POST">
 
-        <label>Valor final:</label>
-        <input
-            type="number"
-            name="valor_final"
-            value="<?= $entrada->valor_final ?>"
-            required
-        >
+    <label>Valor final:</label>
+    <input
+        type="number"
+        name="valor_final"
+        value="<?= $entrada->valor_final ?>"
+        required
+    >
 
-        <br><br>
+    <br><br>
 
-        <label>Tipo de entrada:</label>
-        <input
-            type="text"
-            name="tipo_entrada"
-            value="<?= $entrada->tipo_entrada ?>"
-            required
-        >
+    <label>Tipo de entrada:</label>
+    <input
+        type="text"
+        name="tipo_entrada"
+        value="<?= $entrada->tipo_entrada ?>"
+        required
+    >
 
-        <br><br>
+    <br><br>
 
-        <label>Descuento aplicado:</label>
-        <input
-            type="number"
-            name="descuento_aplicado"
-            value="<?= $entrada->descuento_aplicado ?>"
-            required
-        >
+    <label>Descuento aplicado:</label>
+    <input
+        type="number"
+        name="descuento_aplicado"
+        value="<?= $entrada->descuento_aplicado ?>"
+        required
+    >
 
-        <br><br>
+    <br><br>
 
-        <label>Cliente:</label>
-        <select name="id_cliente" required>
+    <label>Cliente:</label>
+    <select name="id_cliente" required>
 
-            <?php foreach ($clientes as $cliente): ?>
-                <option
-                    value="<?= $cliente->id_cliente ?>"
-                    <?= $cliente->id_cliente == $entrada->CLIENTE_id_cliente ? 'selected' : '' ?>
-                >
-                    <?= $cliente->nombre ?>
-                </option>
-            <?php endforeach; ?>
+        <?php foreach ($clientes as $cliente): ?>
 
-        </select>
+            <option
+                value="<?= $cliente->id_cliente ?>"
+                <?= $cliente->id_cliente == $entrada->CLIENTE_id_cliente ? 'selected' : '' ?>
+            >
+                <?= $cliente->nombre ?>
+            </option>
 
-        <br><br>
+        <?php endforeach; ?>
 
-        <button type="submit">Guardar cambios</button>
+    </select>
 
-    </form>
+    <br><br>
 
-</body>
-</html>
+    <button type="submit">Guardar cambios</button>
+
+</form>
+<br>
+
+<a href="/TPE_WEB2/entradas">Volver al listado</a>
+<?php require './templates/footer.phtml'; ?>

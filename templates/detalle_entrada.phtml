@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Detalle de entrada</title>
-</head>
-<body>
+<?php require './templates/header.phtml'; ?>
 
-    <h1>Detalle de entrada</h1>
+<h1>Detalle de entrada</h1>
 
-    <p>Tipo: <?= $entrada->tipo_entrada ?></p>
-    <p>Valor final: $<?= $entrada->valor_final ?></p>
-    <p>Descuento aplicado: <?= $entrada->descuento_aplicado ?>%</p>
-    <p>Cliente: <?= $entrada->nombre_cliente ?></p>
+<p>Tipo: <?= $entrada->tipo_entrada ?></p>
+<p>Valor final: $<?= $entrada->valor_final ?></p>
+<p>Descuento aplicado: <?= $entrada->descuento_aplicado ?>%</p>
+<p>Cliente: <?= $entrada->nombre_cliente ?></p>
 
-    <a href="/TPE_WEB2/entradas">Volver al listado</a>
+<a href="/TPE_WEB2/entradas">Volver al listado</a>
 
-</body>
-</html>
+<?php require './templates/footer.phtml'; ?>

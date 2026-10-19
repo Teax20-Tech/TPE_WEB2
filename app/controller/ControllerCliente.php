@@ -66,14 +66,20 @@ class ControllerCliente {
 
     public function deleteCliente($id) {
         AuthHelper::verify();
+
         try {
             $this->model->deleteCliente($id);
 
             header('Location: /TPE_WEB2/clientes');
+
         } catch (PDOException $e) {
-            echo "No se puede eliminar el cliente porque tiene entradas asociadas.";
-            echo '<br><br>';
-            echo '<a href="/TPE_WEB2/clientes">Volver al listado de clientes</a>';
+
+            $clientes = $this->model->getClientes();
+
+            $this->view->showClientes(
+                $clientes,
+                "No se puede eliminar el cliente porque tiene entradas asociadas."
+            );
         }
     }
 }

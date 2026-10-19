@@ -1,39 +1,17 @@
-<?php
-if (session_status() != PHP_SESSION_ACTIVE) {
-    session_start();
-}
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Entradas</title>
-</head>
-<body>
+<?php require './templates/header.phtml'; ?>
 
-    <h1>Listado de entradas</h1>
-    <?php if (isset($_SESSION['ID_USER'])): ?>
+<h1>Listado de entradas</h1>
 
-        <p>
-            Usuario: <?= $_SESSION['USER_NAME'] ?>
-        </p>
+<?php if (isset($_SESSION['ID_USER'])): ?>
 
-        <a href="/TPE_WEB2/logout">Cerrar sesión</a>
+    <a href="/TPE_WEB2/entrada/agregar">Agregar entrada</a>
 
-    <?php else: ?>
-
-        <a href="/TPE_WEB2/login">Iniciar sesión</a>
-
-    <?php endif; ?>
-    <?php if (isset($_SESSION['ID_USER'])): ?>
-
-        <a href="/TPE_WEB2/entrada/agregar">Agregar entrada</a>
-
-    <?php endif; ?>
+<?php endif; ?>
 
 <br><br>
 
-    <?php foreach ($entradas as $entrada): ?>
+<?php foreach ($entradas as $entrada): ?>
+
     <p>
         Tipo: <?= $entrada->tipo_entrada ?>
         -
@@ -44,16 +22,22 @@ if (session_status() != PHP_SESSION_ACTIVE) {
         <a href="/TPE_WEB2/entrada/<?= $entrada->id_entrada ?>">
             Ver detalle
         </a>
-        -
+
         <?php if (isset($_SESSION['ID_USER'])): ?>
 
-            <a href="/TPE_WEB2/entrada/editar/<?= $entrada->id_entrada ?>">Editar</a>
+            -
+            <a href="/TPE_WEB2/entrada/editar/<?= $entrada->id_entrada ?>">
+                Editar
+            </a>
 
-            <a href="/TPE_WEB2/entrada/eliminar/<?= $entrada->id_entrada ?>">Eliminar</a>
+            <a href="/TPE_WEB2/entrada/eliminar/<?= $entrada->id_entrada ?>">
+                Eliminar
+            </a>
 
         <?php endif; ?>
+
     </p>
+
 <?php endforeach; ?>
 
-</body>
-</html>
+<?php require './templates/footer.phtml'; ?>

@@ -28,8 +28,8 @@ class ControllerAuth {
 
             header('Location: /TPE_WEB2/entradas');
 
-        } else {
-            echo "Usuario o contraseña incorrectos";
+        } else {    
+            $this->view->showLogin("Usuario o contraseña incorrectos");
         }
     }
 

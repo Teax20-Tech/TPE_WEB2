@@ -1,58 +1,47 @@
-<?php
-if (session_status() != PHP_SESSION_ACTIVE) {
-    session_start();
-}
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Clientes</title>
-</head>
-<body>
+<?php require './templates/header.phtml'; ?>
 
-    <h1>Listado de clientes</h1>
-    <?php if (isset($_SESSION['ID_USER'])): ?>
+<h1>Listado de clientes</h1>
 
-    <p>
-        Usuario: <?= $_SESSION['USER_NAME'] ?>
-    </p>
+<?php if (!empty($error)): ?>
 
-    <a href="/TPE_WEB2/logout">Cerrar sesión</a>
+    <p><?= $error ?></p>
 
-    <?php else: ?>
+<?php endif; ?>
 
-        <a href="/TPE_WEB2/login">Iniciar sesión</a>
+<?php if (isset($_SESSION['ID_USER'])): ?>
 
-    <?php endif; ?>
-    
-    <?php if (isset($_SESSION['ID_USER'])): ?>
+    <a href="/TPE_WEB2/cliente/agregar">Agregar cliente</a>
 
-        <a href="/TPE_WEB2/cliente/agregar">Agregar cliente</a>
-
-    <?php endif; ?>
+<?php endif; ?>
 
 <br><br>
 
-    <?php foreach ($clientes as $cliente): ?>
-        <p>
-            Nombre: <?= $cliente->nombre ?>
+<?php foreach ($clientes as $cliente): ?>
+
+    <p>
+        Nombre: <?= $cliente->nombre ?>
+        -
+        Socio: <?= $cliente->socio ? 'Sí' : 'No' ?>
+        -
+        <a href="/TPE_WEB2/clientes/<?= $cliente->id_cliente ?>/entradas">
+            Ver entradas
+        </a>
+
+        <?php if (isset($_SESSION['ID_USER'])): ?>
+
             -
-            Socio: <?= $cliente->socio ? 'Sí' : 'No' ?>
-            -
-            <a href="/TPE_WEB2/clientes/<?= $cliente->id_cliente ?>/entradas">
-                Ver entradas
+            <a href="/TPE_WEB2/cliente/editar/<?= $cliente->id_cliente ?>">
+                Editar
             </a>
-            -
-            <?php if (isset($_SESSION['ID_USER'])): ?>
 
-                <a href="/TPE_WEB2/cliente/editar/<?= $cliente->id_cliente ?>">Editar</a>
+            <a href="/TPE_WEB2/cliente/eliminar/<?= $cliente->id_cliente ?>">
+                Eliminar
+            </a>
 
-                <a href="/TPE_WEB2/cliente/eliminar/<?= $cliente->id_cliente ?>">Eliminar</a>
+        <?php endif; ?>
 
-            <?php endif; ?>
-        </p>
-    <?php endforeach; ?>
+    </p>
 
-</body>
-</html>
+<?php endforeach; ?>
+
+<?php require './templates/footer.phtml'; ?>
